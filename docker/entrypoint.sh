@@ -85,16 +85,16 @@ else
     echo "程序自动升级已关闭，如需自动升级请在创建容器时设置环境变量：NASTOOL_AUTO_UPDATE=true"
 fi
 
-echo "以PUID=${PUID}，PGID=${PGID}的身份启动程序..."
-
-if [ "${NASTOOL_VERSION}" = "lite" ]; then
-    mkdir -p /.pm2
-    chown -R "${PUID}":"${PGID}" "${WORKDIR}" /config /.pm2
-else
-    mkdir -p /.local
-    mkdir -p /.pm2
-    chown -R "${PUID}":"${PGID}" "${WORKDIR}" /config /usr/lib/chromium /.local /.pm2
-    export PATH=${PATH}:/usr/lib/chromium
-fi
-umask "${UMASK}"
-exec su-exec "${PUID}":"${PGID}" "$(which dumb-init)" "$(which pm2-runtime)" start run.py -n NAStool --interpreter python3
+#echo "以PUID=${PUID}，PGID=${PGID}的身份启动程序..."
+#
+#if [ "${NASTOOL_VERSION}" = "lite" ]; then
+#    mkdir -p /.pm2
+#    chown -R "${PUID}":"${PGID}" "${WORKDIR}" /config /.pm2
+#else
+#    mkdir -p /.local
+#    mkdir -p /.pm2
+#    chown -R "${PUID}":"${PGID}" "${WORKDIR}" /config /usr/lib/chromium /.local /.pm2
+#    export PATH=${PATH}:/usr/lib/chromium
+#fi
+#umask "${UMASK}"
+#exec su-exec "${PUID}":"${PGID}" "$(which dumb-init)" "$(which pm2-runtime)" start run.py -n NAStool --interpreter python3
