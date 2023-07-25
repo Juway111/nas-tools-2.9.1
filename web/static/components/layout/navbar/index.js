@@ -526,7 +526,7 @@ export class LayoutNavbar extends CustomElement {
     this.layout_userpris = navbar_list.map((item) => (item.name));
     this._active_name = "";
     this._update_appversion = "";
-    this._update_url = "https://github.com/Juway111/nastools-2.9.1";
+    this._update_url = "https://juway111.github.io/nastool/Releases.html";
     this._is_update = false;
     this.classList.add("navbar","navbar-vertical","navbar-expand-lg","lit-navbar-fixed","lit-navbar","lit-navbar-hide-scrollbar");
   }
