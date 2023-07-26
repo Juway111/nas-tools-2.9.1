@@ -522,7 +522,7 @@ export class LayoutNavbar extends CustomElement {
   constructor() {
     super();
     this.layout_gopage = "";
-    this.layout_appversion = "v2.8.3 e950041";
+    this.layout_appversion = "v2.9.1-优化版";
     this.layout_userpris = navbar_list.map((item) => (item.name));
     this._active_name = "";
     this._update_appversion = "";
@@ -562,26 +562,26 @@ export class LayoutNavbar extends CustomElement {
     }
   }
 
-  _check_new_version() {
-    ajax_post("version", {}, (ret) => {
-      if (ret.code === 0) {
-        let url = null;
-        switch (compareVersion(ret.version, this.layout_appversion)) {
-          case 1:
-            url = ret.url;
-            break;
-          case 2:
-            url = "https://github.com/Juway111/nastools-2.9.1/commits/master"
-            break;
-        }
-        if (url) {
-          this._update_url = url;
-          this._update_appversion = ret.version;
-          this._is_update = true;
-        }
-      }
-    });
-  }
+  //_check_new_version() {
+  //  ajax_post("version", {}, (ret) => {
+  //    if (ret.code === 0) {
+  //      let url = null;
+  //      switch (compareVersion(ret.version, this.layout_appversion)) {
+  //        case 1:
+  //          url = ret.url;
+  //          break;
+  //        case 2:
+  //          url = "https://github.com/Juway111/nastools-2.9.1/commits/master"
+  //          break;
+  //      }
+  //      if (url) {
+  //        this._update_url = url;
+  //        this._update_appversion = ret.version;
+  //        this._is_update = true;
+  //      }
+  //    }
+  //  });
+  //}
 
   update_active(page) {
     this._active_name = page ?? window.history.state?.page;
