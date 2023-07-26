@@ -40,25 +40,25 @@ class WebUtils:
             commit_id = commit_id[:7]
         return "%s %s" % (APP_VERSION, commit_id)
 
-    @staticmethod
-    def get_latest_version():
-        """
-        获取最新版本号
-        """
-        try:
-            version_res = RequestUtils(proxies=Config().get_proxies()).get_res(
-                "https://api.github.com/repos/Juway111/nastools-2.9.1/releases/latest")
-            commit_res = RequestUtils(proxies=Config().get_proxies()).get_res(
-                "https://api.github.com/repos/Juway111/nastools-2.9.1/commits/master")
-            if version_res and commit_res:
-                ver_json = version_res.json()
-                commit_json = commit_res.json()
-                version = f"{ver_json['tag_name']} {commit_json['sha'][:7]}"
-                url = ver_json["html_url"]
-                return version, url, True
-        except Exception as e:
-            ExceptionUtils.exception_traceback(e)
-        return None, None, False
+#    @staticmethod
+#    def get_latest_version():
+#        """
+#        获取最新版本号
+#        """
+#        try:
+#            version_res = RequestUtils(proxies=Config().get_proxies()).get_res(
+#                "https://api.github.com/repos/Juway111/nastools-2.9.1/releases/latest")
+#            commit_res = RequestUtils(proxies=Config().get_proxies()).get_res(
+#                "https://api.github.com/repos/Juway111/nastools-2.9.1/commits/master")
+#            if version_res and commit_res:
+#                ver_json = version_res.json()
+#                commit_json = commit_res.json()
+#                version = f"{ver_json['tag_name']} {commit_json['sha'][:7]}"
+#                url = ver_json["html_url"]
+#                return version, url, True
+#        except Exception as e:
+#            ExceptionUtils.exception_traceback(e)
+#        return None, None, False
 
     @staticmethod
     def get_mediainfo_from_id(mtype, mediaid):
